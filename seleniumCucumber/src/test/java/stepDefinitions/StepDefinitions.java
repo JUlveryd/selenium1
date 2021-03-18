@@ -15,13 +15,16 @@ public class StepDefinitions {
 
 	private WebDriver driver;
 
-	@Given("I have entered {int} into the calculator")
-	public void i_have_entered_int1_into_the_calculator(Integer int1) {
-
+	@Given("I have logged in to the page calculator")
+	public void i_have_logged_in_to_the_page_calculator() {
 		System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\Selenium\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.get("https://www.marshu.com/articles/calculate-addition-calculator-add-two-numbers.php");
+	}
+
+	@Given("I have entered {int} into the calculator")
+	public void i_have_entered_int1_into_the_calculator(Integer int1) {
 		WebElement field1 = driver.findElement(By.name("n01"));
 		field1.sendKeys("70");
 	}
@@ -46,5 +49,4 @@ public class StepDefinitions {
 		System.out.println(sum);
 		assertEquals(sum, "120");
 	}
-
 }
